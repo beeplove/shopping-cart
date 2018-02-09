@@ -21,7 +21,9 @@ class ApplicationController < ActionController::API
     }, status: :ok
   end
 
+  #
   # To standarize the api error response
+  #
   def erronator code, message, description=nil
     error = {
       message: message,
