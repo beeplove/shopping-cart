@@ -29,22 +29,17 @@ RSpec.describe CustomersController, type: :controller do
   # Customer. As you add validations to Customer, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:customer)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {}
   }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # CustomersController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
       customer = Customer.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :index, params: {}
       expect(response).to be_success
     end
   end
@@ -52,7 +47,7 @@ RSpec.describe CustomersController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       customer = Customer.create! valid_attributes
-      get :show, params: {id: customer.to_param}, session: valid_session
+      get :show, params: {id: customer.to_param}
       expect(response).to be_success
     end
   end
@@ -61,23 +56,22 @@ RSpec.describe CustomersController, type: :controller do
     context "with valid params" do
       it "creates a new Customer" do
         expect {
-          post :create, params: {customer: valid_attributes}, session: valid_session
+          post :create, params: {customer: valid_attributes}
         }.to change(Customer, :count).by(1)
       end
 
       it "renders a JSON response with the new customer" do
 
-        post :create, params: {customer: valid_attributes}, session: valid_session
-        expect(response).to have_http_status(:created)
+        post :create, params: {customer: valid_attributes}
+        expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
-        expect(response.location).to eq(customer_url(Customer.last))
       end
     end
 
     context "with invalid params" do
       it "renders a JSON response with errors for the new customer" do
 
-        post :create, params: {customer: invalid_attributes}, session: valid_session
+        post :create, params: {customer: invalid_attributes}
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
@@ -92,7 +86,7 @@ RSpec.describe CustomersController, type: :controller do
 
   #     it "updates the requested customer" do
   #       customer = Customer.create! valid_attributes
-  #       put :update, params: {id: customer.to_param, customer: new_attributes}, session: valid_session
+  #       put :update, params: {id: customer.to_param, customer: new_attributes}
   #       customer.reload
   #       skip("Add assertions for updated state")
   #     end
@@ -100,7 +94,7 @@ RSpec.describe CustomersController, type: :controller do
   #     it "renders a JSON response with the customer" do
   #       customer = Customer.create! valid_attributes
 
-  #       put :update, params: {id: customer.to_param, customer: valid_attributes}, session: valid_session
+  #       put :update, params: {id: customer.to_param, customer: valid_attributes}
   #       expect(response).to have_http_status(:ok)
   #       expect(response.content_type).to eq('application/json')
   #     end
@@ -121,7 +115,7 @@ RSpec.describe CustomersController, type: :controller do
   #   it "destroys the requested customer" do
   #     customer = Customer.create! valid_attributes
   #     expect {
-  #       delete :destroy, params: {id: customer.to_param}, session: valid_session
+  #       delete :destroy, params: {id: customer.to_param}
   #     }.to change(Customer, :count).by(-1)
   #   end
   # end
