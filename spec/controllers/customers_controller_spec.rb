@@ -84,46 +84,46 @@ RSpec.describe CustomersController, type: :controller do
     end
   end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
 
-      it "updates the requested customer" do
-        customer = Customer.create! valid_attributes
-        put :update, params: {id: customer.to_param, customer: new_attributes}, session: valid_session
-        customer.reload
-        skip("Add assertions for updated state")
-      end
+  #     it "updates the requested customer" do
+  #       customer = Customer.create! valid_attributes
+  #       put :update, params: {id: customer.to_param, customer: new_attributes}, session: valid_session
+  #       customer.reload
+  #       skip("Add assertions for updated state")
+  #     end
 
-      it "renders a JSON response with the customer" do
-        customer = Customer.create! valid_attributes
+  #     it "renders a JSON response with the customer" do
+  #       customer = Customer.create! valid_attributes
 
-        put :update, params: {id: customer.to_param, customer: valid_attributes}, session: valid_session
-        expect(response).to have_http_status(:ok)
-        expect(response.content_type).to eq('application/json')
-      end
-    end
+  #       put :update, params: {id: customer.to_param, customer: valid_attributes}, session: valid_session
+  #       expect(response).to have_http_status(:ok)
+  #       expect(response.content_type).to eq('application/json')
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "renders a JSON response with errors for the customer" do
-        customer = Customer.create! valid_attributes
+  #   context "with invalid params" do
+  #     it "renders a JSON response with errors for the customer" do
+  #       customer = Customer.create! valid_attributes
 
-        put :update, params: {id: customer.to_param, customer: invalid_attributes}, session: valid_session
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq('application/json')
-      end
-    end
-  end
+  #       put :update, params: {id: customer.to_param, customer: invalid_attributes}, session: valid_session
+  #       expect(response).to have_http_status(:unprocessable_entity)
+  #       expect(response.content_type).to eq('application/json')
+  #     end
+  #   end
+  # end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested customer" do
-      customer = Customer.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: customer.to_param}, session: valid_session
-      }.to change(Customer, :count).by(-1)
-    end
-  end
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested customer" do
+  #     customer = Customer.create! valid_attributes
+  #     expect {
+  #       delete :destroy, params: {id: customer.to_param}, session: valid_session
+  #     }.to change(Customer, :count).by(-1)
+  #   end
+  # end
 
 end
