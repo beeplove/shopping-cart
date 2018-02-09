@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Status.create([
+  { id: 1, name: 'order received' },
+  { id: 2, name: 'waiting for delivery' },
+  { id: 3, name: 'on its way' },
+  { id: 4, name: 'delivered' }
+])
