@@ -1,24 +1,24 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :update, :destroy]
 
-  # GET /orders
+  # GET /customers/:customer_id/orders
   def index
     @orders = Order.all
 
-    render json: @orders
+    jsonator @orders
   end
 
-  # GET /orders/1
+  # GET /customers/:customer_id/orders/:id
   def show
     render json: @order
   end
 
-  # POST /orders
+  # POST /customers/:customer_id/orders
   def create
     @order = Order.new(order_params)
 
     if @order.save
-      render json: @order, status: :created, location: @order
+      jsonator @order
     else
       render json: @order.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.fetch(:order, {})
+      params.fetch(:order, {}).permit(:customer_id)
     end
 end

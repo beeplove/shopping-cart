@@ -10,7 +10,6 @@ class ApplicationController < ActionController::API
     erronator(code, message)
   end
 
-
   #
   # To standarize the api success response
   #
