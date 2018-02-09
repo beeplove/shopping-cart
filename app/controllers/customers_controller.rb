@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   def index
     @customers = Customer.all
 
-    render json: @customers
+    jsonator @customers
   end
 
   # GET /customers/1
@@ -18,7 +18,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
 
     if @customer.save
-      render json: @customer, status: :created, location: @customer
+      jsonator @customer
     else
       render json: @customer.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class CustomersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def customer_params
-      params.fetch(:customer, {})
+      params.fetch(:customer, {}).permit(:first_name)
     end
 end
