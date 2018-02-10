@@ -1,8 +1,9 @@
+class Unit < ApplicationRecord
   #
   # TODO
   #   - Add validations
   #   - Add index and unique constraints
-  #   - Association with ProductUnit
   #
-class Unit < ApplicationRecord
+
+  has_many :skus
 end

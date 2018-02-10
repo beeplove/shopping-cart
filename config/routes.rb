@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :skus, only: [:create, :index, :show]
   resources :products, only: [:create, :index, :show]
 
   resources :customers, only: [:create, :index, :show] do
