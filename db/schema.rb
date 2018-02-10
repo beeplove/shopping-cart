@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210192251) do
+ActiveRecord::Schema.define(version: 20180210193217) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name", null: false
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20180210192251) do
   create_table "skus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "product_id"
     t.bigint "unit_id"
-    t.integer "price_in_cents", null: false
-    t.boolean "fraction_allowed", default: false, null: false
+    t.integer "unit_price_in_cents", null: false
+    t.integer "decimal_factor", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_skus_on_product_id"
