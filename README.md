@@ -2,6 +2,5 @@
 
 % gem install bundle
 % bundle
-% rails db:migrate
-% rails db:seed
+% rails db:setup
 % rails s

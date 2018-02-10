@@ -19,3 +19,10 @@ Unit.create([
   { id: 3, name: 'pc', description: 'count by pieces'},
   { id: 4, name: 'dz', description: 'count by 12 pieces'}
 ])
+
+Category.create([
+  { id: 1, name: 'Dairy'},
+  { id: 2, name: 'Vegetable'},
+  { id: 3, name: 'Fruit'},
+  { id: 4, name: 'Bakery'}
+])
