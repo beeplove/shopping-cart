@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lineitems
   resources :skus, only: [:create, :index, :show]
   resources :products, only: [:create, :index, :show]
 

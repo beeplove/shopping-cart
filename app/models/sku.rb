@@ -2,7 +2,8 @@ class Sku < ApplicationRecord
   #
   # TODO
   #   - Add validations
-  #     - validation for price, negative and not to high
+  #     - validation for price, negativity and not too high
+  #     - validation for decimal_factor, negativity and not too high
   #   - Add index and unique constraints
   #   - price accessor from price_in_cents
   #
