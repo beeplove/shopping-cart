@@ -12,3 +12,10 @@ Status.create([
   { id: 3, name: 'on its way' },
   { id: 4, name: 'delivered' }
 ])
+
+Unit.create([
+  { id: 1, name: 'oz', description: 'weight by ounce'},
+  { id: 2, name: 'lb', description: 'weight by pound'},
+  { id: 3, name: 'pc', description: 'count by pieces'},
+  { id: 4, name: 'dz', description: 'count by 12 pieces'}
+])
