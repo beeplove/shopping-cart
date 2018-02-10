@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Customers", type: :request do
   describe "GET /customers" do
-    it "returns json resonse with http status 200" do
+    it "returns json response with http status 200" do
       get "/customers"
 
       expect(response).to have_http_status(:ok)

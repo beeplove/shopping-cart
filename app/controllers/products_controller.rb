@@ -5,12 +5,12 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
 
-    render json: @products
+    jsonator @products
   end
 
   # GET /products/1
   def show
-    render json: @product
+    jsonator @product
   end
 
   # POST /products
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      render json: @product, status: :created, location: @product
+      jsonator @product
     else
       render json: @product.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.fetch(:product, {})
+      params.fetch(:product, {}).permit(:name)
     end
 end
