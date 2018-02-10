@@ -46,6 +46,6 @@ class SkusController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sku_params
-      params.fetch(:sku, {}).permit(:product_id, :unit_id, :price_in_cents, :fraction_allowed)
+      params.fetch(:sku, {}).permit(:product_id, :unit_id, :unit_price_in_cents, :decimal_factor)
     end
 end
