@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# TODO: test cases for rest fo the requests
+
 RSpec.describe "Skus", type: :request do
   describe "GET /skus" do
     it "returns json response with http status 200" do

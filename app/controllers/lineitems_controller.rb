@@ -5,12 +5,12 @@ class LineitemsController < ApplicationController
   def index
     @lineitems = Lineitem.all
 
-    render json: @lineitems
+    jsonator @lineitems
   end
 
   # GET /lineitems/1
   def show
-    render json: @lineitem
+    jsonator @lineitem
   end
 
   # POST /lineitems
@@ -18,7 +18,7 @@ class LineitemsController < ApplicationController
     @lineitem = Lineitem.new(lineitem_params)
 
     if @lineitem.save
-      render json: @lineitem, status: :created, location: @lineitem
+      jsonator @lineitem
     else
       render json: @lineitem.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class LineitemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def lineitem_params
-      params.fetch(:lineitem, {})
+      params.fetch(:lineitem, {}).permit(:order_id, :sku_id, :quantity)
     end
 end

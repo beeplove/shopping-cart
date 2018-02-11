@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# TODO: test cases for rest fo the requests
+
 RSpec.describe "Orders", type: :request do
   let(:customer) { create(:customer) }
 

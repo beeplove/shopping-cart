@@ -7,4 +7,15 @@ class Lineitem < ApplicationRecord
   #   - Association with Order
   #   - Association with Sku
   #
+
+  belongs_to :order
+  belongs_to :sku
+
+  before_save :calculate_price_in_cents
+
+
+  def calculate_price_in_cents
+    # TODO: put actual logic
+    self.price_in_cents = 1256
+  end
 end

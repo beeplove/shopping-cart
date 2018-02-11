@@ -10,4 +10,6 @@ class Sku < ApplicationRecord
 
   belongs_to :product
   belongs_to :unit
+
+  has_many :lineitems
 end

@@ -7,4 +7,6 @@ class Order < ApplicationRecord
 
   belongs_to :customer
   belongs_to :status
+
+  has_many :lineitems
 end
