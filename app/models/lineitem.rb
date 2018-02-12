@@ -6,6 +6,7 @@ class Lineitem < ApplicationRecord
   #   - Add index and unique constraints
   #   - Association with Order
   #   - Association with Sku
+  #   - quantity to decimal or one more attribute for actual quantity
   #
 
   belongs_to :order
