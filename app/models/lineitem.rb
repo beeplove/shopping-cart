@@ -7,6 +7,7 @@ class Lineitem < ApplicationRecord
   #   - Association with Order
   #   - Association with Sku
   #   - quantity to decimal or one more attribute for actual quantity
+  #     - add before save validation to validate quantity by taking sku.decimal_factor into consideratio
   #
 
   belongs_to :order
