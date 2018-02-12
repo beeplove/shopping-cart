@@ -15,6 +15,7 @@ class SkusController < ApplicationController
 
   # POST /skus
   def create
+    # TODO: make use of params[:product_id] instead of keeping paams[:sku][:product_id] required
     @sku = Sku.new(sku_params)
 
     if @sku.save

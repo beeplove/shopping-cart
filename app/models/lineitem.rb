@@ -15,6 +15,7 @@ class Lineitem < ApplicationRecord
 
   def calculate_price_in_cents
     @price_in_cents = (self.quantity * self.sku.unit_price_in_cents).ceil
+    self.price_in_cents = @price_in_cents
   end
 
   def price_in_cents
