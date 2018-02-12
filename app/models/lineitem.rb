@@ -2,8 +2,6 @@ class Lineitem < ApplicationRecord
   #
   # TODO
   #   - Add index and unique constraints
-  #   - Association with Order
-  #   - Association with Sku
   #
 
   belongs_to :order
@@ -28,4 +26,5 @@ class Lineitem < ApplicationRecord
     value = self.quantity * (10 ** self.sku.decimal_factor)
     errors.add(:quantity, "Please check quantity decimal value") unless value.to_i == value
   end
+
 end
