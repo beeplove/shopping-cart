@@ -3,11 +3,10 @@ class Lineitem < ApplicationRecord
   # TODO
   #   - Add validations
   #     - add validation on quanity
+  #     - add before save validation to validate quantity by taking sku.decimal_factor into consideratio
   #   - Add index and unique constraints
   #   - Association with Order
   #   - Association with Sku
-  #   - quantity to decimal or one more attribute for actual quantity
-  #     - add before save validation to validate quantity by taking sku.decimal_factor into consideratio
   #
 
   belongs_to :order
