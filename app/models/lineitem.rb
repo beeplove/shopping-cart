@@ -1,9 +1,6 @@
 class Lineitem < ApplicationRecord
   #
   # TODO
-  #   - Add validations
-  #     - add validation on quanity
-  #     - add before save validation to validate quantity by taking sku.decimal_factor into consideratio
   #   - Add index and unique constraints
   #   - Association with Order
   #   - Association with Sku
@@ -19,8 +16,12 @@ class Lineitem < ApplicationRecord
   validate :decimal_value_of_quantity
 
   def calculate_price_in_cents
-    # TODO: put actual logic
-    self.price_in_cents = 1256
+    @price_in_cents = (self.quantity * self.sku.unit_price_in_cents).ceil
+  end
+
+  def price_in_cents
+    calculate_price_in_cents
+    @price_in_cents
   end
 
   def decimal_value_of_quantity
