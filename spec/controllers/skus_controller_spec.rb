@@ -43,7 +43,7 @@ RSpec.describe SkusController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       sku = Sku.create! valid_attributes
-      get :index, params: {}
+      get :index, params: { product_id: sku.product.id }
       expect(response).to be_success
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe SkusController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       sku = Sku.create! valid_attributes
-      get :show, params: {id: sku.to_param}
+      get :show, params: { id: sku.to_param, product_id: sku.product.id }
       expect(response).to be_success
     end
   end
@@ -60,13 +60,13 @@ RSpec.describe SkusController, type: :controller do
     context "with valid params" do
       it "creates a new Sku" do
         expect {
-          post :create, params: {sku: valid_attributes}
+          post :create, params: { sku: valid_attributes, product_id: valid_attributes["product_id"] }
         }.to change(Sku, :count).by(1)
       end
 
       it "renders a JSON response with the new sku" do
 
-        post :create, params: {sku: valid_attributes}
+        post :create, params: { sku: valid_attributes, product_id: valid_attributes["product_id"] }
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
       end
@@ -75,7 +75,7 @@ RSpec.describe SkusController, type: :controller do
     context "with invalid params" do
       it "renders a JSON response with errors for the new sku" do
 
-        post :create, params: {sku: invalid_attributes}
+        post :create, params: { sku: invalid_attributes, product_id: valid_attributes["product_id"] }
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end

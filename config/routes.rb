@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  # TODO: skus and product_categories to be nested of product resource
-  resources :product_categories, only: [:create, :index, :show]
-  resources :skus, only: [:create, :index, :show]
-  resources :products, only: [:create, :index, :show]
+  resources :products, only: [:create, :index, :show] do
+    resources :product_categories, only: [:create, :index, :show]
+    resources :skus, only: [:create, :index, :show]
+  end
 
   resources :customers, only: [:create, :index, :show] do
     resources :orders, only: [:create, :index, :show] do

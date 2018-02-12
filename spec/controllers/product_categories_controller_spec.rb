@@ -43,7 +43,7 @@ RSpec.describe ProductCategoriesController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       product_category = ProductCategory.create! valid_attributes
-      get :index, params: {}
+      get :index, params: { product_id: product_category.product_id }
       expect(response).to be_success
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe ProductCategoriesController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       product_category = ProductCategory.create! valid_attributes
-      get :show, params: {id: product_category.to_param}
+      get :show, params: { id: product_category.to_param, product_id: product_category.product_id }
       expect(response).to be_success
     end
   end
@@ -60,23 +60,22 @@ RSpec.describe ProductCategoriesController, type: :controller do
     context "with valid params" do
       it "creates a new ProductCategory" do
         expect {
-          post :create, params: {product_category: valid_attributes}
+          post :create, params: { product_category: valid_attributes, product_id: valid_attributes["product_id"] }
         }.to change(ProductCategory, :count).by(1)
       end
 
       it "renders a JSON response with the new product_category" do
 
-        post :create, params: {product_category: valid_attributes}
-        expect(response).to have_http_status(:created)
+        post :create, params: { product_category: valid_attributes, product_id: valid_attributes["product_id"] }
+        expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
-        expect(response.location).to eq(product_category_url(ProductCategory.last))
       end
     end
 
     context "with invalid params" do
       it "renders a JSON response with errors for the new product_category" do
 
-        post :create, params: {product_category: invalid_attributes}
+        post :create, params: { product_category: invalid_attributes, product_id: valid_attributes["product_id"] }
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end

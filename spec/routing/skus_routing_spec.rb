@@ -4,17 +4,17 @@ RSpec.describe SkusController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/skus").to route_to("skus#index")
+      expect(:get => "/products/1/skus").to route_to("skus#index", :product_id => "1")
     end
 
 
     it "routes to #show" do
-      expect(:get => "/skus/1").to route_to("skus#show", :id => "1")
+      expect(:get => "/products/1/skus/1").to route_to("skus#show", :product_id => "1", :id => "1")
     end
 
 
     it "routes to #create" do
-      expect(:post => "/skus").to route_to("skus#create")
+      expect(:post => "/products/1/skus").to route_to("skus#create", :product_id => "1")
     end
 
     # it "routes to #update via PUT" do

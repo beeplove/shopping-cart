@@ -5,12 +5,12 @@ class ProductCategoriesController < ApplicationController
   def index
     @product_categories = ProductCategory.all
 
-    render json: @product_categories
+    jsonator @product_categories
   end
 
   # GET /product_categories/1
   def show
-    render json: @product_category
+    jsonator @product_category
   end
 
   # POST /product_categories
@@ -18,7 +18,7 @@ class ProductCategoriesController < ApplicationController
     @product_category = ProductCategory.new(product_category_params)
 
     if @product_category.save
-      render json: @product_category, status: :created, location: @product_category
+      jsonator @product_category
     else
       render json: @product_category.errors, status: :unprocessable_entity
     end
