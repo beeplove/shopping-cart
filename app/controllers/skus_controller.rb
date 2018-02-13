@@ -3,7 +3,7 @@ class SkusController < ApplicationController
 
   # GET /skus
   def index
-    @skus = Sku.all
+    @skus = Sku.where(product_id: params[:product_id])
 
     jsonator @skus
   end
@@ -25,24 +25,24 @@ class SkusController < ApplicationController
     end
   end
 
-  # PATCH/PUT /skus/1
-  def update
-    if @sku.update(sku_params)
-      render json: @sku
-    else
-      render json: @sku.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /skus/1
+  # def update
+  #   if @sku.update(sku_params)
+  #     render json: @sku
+  #   else
+  #     render json: @sku.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /skus/1
-  def destroy
-    @sku.destroy
-  end
+  # # DELETE /skus/1
+  # def destroy
+  #   @sku.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sku
-      @sku = Sku.find(params[:id])
+      @sku = Sku.where(product_id: params[:product_id]).find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

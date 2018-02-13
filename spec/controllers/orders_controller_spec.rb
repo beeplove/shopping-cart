@@ -43,9 +43,19 @@ RSpec.describe OrdersController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       order = Order.create! valid_attributes
+
       get :index, params: { customer_id: order.customer_id }
       expect(response).to be_success
     end
+
+    it "returns a orders only for the customer_id" do
+      order = Order.create! valid_attributes
+      create(:order2)
+
+      get :index, params: { customer_id: order.customer_id }
+      expect(JSON.parse(response.body)["data"].size).to eq(1)
+    end
+
   end
 
   describe "GET #show" do

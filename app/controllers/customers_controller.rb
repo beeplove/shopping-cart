@@ -24,19 +24,19 @@ class CustomersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers/1
-  def update
-    if @customer.update(customer_params)
-      render json: @customer
-    else
-      render json: @customer.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /customers/1
+  # def update
+  #   if @customer.update(customer_params)
+  #     render json: @customer
+  #   else
+  #     render json: @customer.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /customers/1
-  def destroy
-    @customer.destroy
-  end
+  # # DELETE /customers/1
+  # def destroy
+  #   @customer.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
