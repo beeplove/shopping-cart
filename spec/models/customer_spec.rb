@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:orders) }
+
+  describe "#first_name" do
+    it "should not be empty"
+  end
 end
