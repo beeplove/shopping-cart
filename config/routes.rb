@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'reports/by_category'
+
   resources :products, only: [:create, :index, :show] do
     resources :product_categories, only: [:create, :index, :show]
     resources :skus, only: [:create, :index, :show]
