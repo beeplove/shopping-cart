@@ -34,7 +34,12 @@ SQL
   task generate_csv_product_sold: :environment do
     include ReportConcern
 
-    # TODO: Move report path to config
+    #
+    # TODO:
+    #   - Move report path to config
+    #   - for large report, use queue and notify user when report is generated
+    #
+
     filename = Rails.root.to_s + "/generated_reports/product_sold_" + Time.current.strftime("%Y%m%d%H%M%S") + ".csv"
     data = get_product_sold_data(ENV['START_DATE'], ENV['END_DATE'], ENV['STEP'])
 
