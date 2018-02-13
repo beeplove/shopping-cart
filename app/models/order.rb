@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   #
   # TODO
   #   - Validations
+  #   - Add total_price
   #
 
   belongs_to :customer
