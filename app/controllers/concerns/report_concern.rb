@@ -1,7 +1,7 @@
 module ReportConcern
   extend ActiveSupport::Concern
 
-  def get_product_sold_data start_date, end_date, step
+  def get_product_sold_data start_date=nil, end_date=nil, step=nil
     start_date = (start_date || '2018-01-01').to_datetime
     end_date = (end_date || '2018-12-31').to_datetime
     step = (step || 'week').upcase

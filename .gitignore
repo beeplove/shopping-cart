@@ -16,4 +16,5 @@
 .byebug_history
 
 NOTES.md
+/generated_reports/*.csv
 

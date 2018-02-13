@@ -1,3 +1,5 @@
+require 'csv'
+
 namespace :report do
   desc "display count purchased by category"
   task by_category: :environment do
@@ -25,6 +27,25 @@ SQL
     ActiveRecord::Base.connection.execute(sql).each do |row|
       puts row.join("\t")
     end
+  end
+
+
+  desc "generate csv file for product sold report"
+  task generate_csv_product_sold: :environment do
+    include ReportConcern
+
+    # TODO: Move report path to config
+    filename = Rails.root.to_s + "/generated_reports/product_sold_" + Time.current.strftime("%Y%m%d%H%M%S") + ".csv"
+    data = get_product_sold_data(ENV['START_DATE'], ENV['END_DATE'], ENV['STEP'])
+
+    CSV.open(filename, "wb") do |csv|
+      data.each do |row|
+        line = [row[:sku_id], row[:period], row[:total]]
+        csv << line
+        puts line.join("\t")
+      end
+    end
+    puts "\nLocation of report generated: #{filename}"
   end
 
 end
