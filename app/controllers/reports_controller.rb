@@ -19,4 +19,19 @@ class ReportsController < ApplicationController
       sum(lineitems.quantity) as total'
     ).group('customers.id, customers.first_name, categories.id, categories.name')
   end
+
+  #
+  # TODO:
+  #   - use params to form actual query
+  #   - Take status into account
+  #
+  def product_sold
+    start_date = params[:start_date] || '2018-01-01'
+    end_date = params[:end_date] || '2018-12-31'
+    timespan = (params[:timespan] || 'week').upcase
+
+    jsonator Lineitem.where("created_at >= ? AND created_at <= ?", "2018-02-11 00:00:00", "2018-02-13 23:59:59")
+      .select("sku_id, #{timespan}(created_at) as period, SUM(quantity) as total")
+      .group('sku_id, period')
+  end
 end
