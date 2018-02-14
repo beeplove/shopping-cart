@@ -1,19 +1,19 @@
 class SkusController < ApplicationController
   before_action :set_sku, only: [:show, :update, :destroy]
 
-  # GET /skus
+  # GET /products/:product_id/skus
   def index
     @skus = Sku.where(product_id: params[:product_id])
 
     jsonator @skus
   end
 
-  # GET /skus/1
+  # GET /products/:product_id/skus/:id
   def show
     jsonator @sku
   end
 
-  # POST /skus
+  # POST /products/:product_id/skus
   def create
     # TODO: make use of params[:product_id] instead of keeping paams[:sku][:product_id] required
     @sku = Sku.new(sku_params)

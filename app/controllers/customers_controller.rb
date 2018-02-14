@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1
   def show
-    render json: @customer
+    jsonator @customer
   end
 
   # POST /customers

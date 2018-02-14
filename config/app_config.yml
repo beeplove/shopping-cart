@@ -1,0 +1,12 @@
+default: &default
+  report:
+    path: <%= "#{Rails.root.to_path}/generated_reports" %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

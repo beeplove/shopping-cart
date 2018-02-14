@@ -20,7 +20,8 @@ namespace :report do
       JOIN    product_categories pc ON pc.product_id=p.id
       JOIN    categories cat ON pc.category_id=cat.id
 
-      GROUP   BY c.id, c.first_name, cat.id, cat.name
+      GROUP BY
+              c.id, c.first_name, cat.id, cat.name
       ;
 SQL
 
@@ -34,13 +35,7 @@ SQL
   task generate_csv_product_sold: :environment do
     include ReportConcern
 
-    #
-    # TODO:
-    #   - Move report path to config
-    #   - for large report, use queue and notify user when report is generated
-    #
-
-    filename = Rails.root.to_s + "/generated_reports/product_sold_" + Time.current.strftime("%Y%m%d%H%M%S") + ".csv"
+    filename = APP_CONFIG["report"]["path"] + "/product_sold_" + Time.current.strftime("%Y%m%d%H%M%S") + ".csv"
     data = get_product_sold_data(ENV['START_DATE'], ENV['END_DATE'], ENV['STEP'])
 
     CSV.open(filename, "wb") do |csv|

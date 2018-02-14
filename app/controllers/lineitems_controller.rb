@@ -9,7 +9,7 @@ class LineitemsController < ApplicationController
     jsonator @lineitems
   end
 
-  # GET /customers/:customer_id/orders/:order_id/lineitems/1
+  # GET /customers/:customer_id/orders/:order_id/lineitems/:id
   def show
     jsonator @lineitem
   end
