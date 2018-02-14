@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
     jsonator @customers
   end
 
-  # GET /customers/1
+  # GET /customers/:id
   def show
     jsonator @customer
   end

@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     jsonator @products
   end
 
-  # GET /products/1
+  # GET /products/:id
   def show
     jsonator @product
   end
