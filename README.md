@@ -1,5 +1,4 @@
-# To start the server
-
+#### To start the server
 
 Run the following commands on the project folder:
 
@@ -13,3 +12,7 @@ Run the following commands on the project folder:
 % rails s
 ```
 
+server should be running on port 3000
+
+To see the list of endpoint available, run:
+`% rails routes`

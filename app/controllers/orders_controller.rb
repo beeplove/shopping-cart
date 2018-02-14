@@ -5,6 +5,9 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.where(customer_id: params[:customer_id])
 
+    # TODO:
+    #   - in the reponse also include lineitems and possibly more data
+
     jsonator @orders
   end
 
